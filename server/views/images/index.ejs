@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viviana Jade Rocha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/index.css" type="text/css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="container">
+    <h1>Viviana Jade Rocha</h1>
+
+    <% images.forEach( function( img, i ) { %>
+        <% if( i % 6 === 0 ) { %>
+        <div class="row visible-lg">
+        <% } %>
+            <div class="col-lg-2 text-center">
+                <a href="<%=img.url + img.filename %>">
+                    <img src="<%=img.url + 'thumbs/' + img.thumb %>" />
+                </a>
+            </div>
+        <% if( i % 6 === 5 || i === images.length -1 ) { %>
+        </div>
+        <% } %>
+    <% }); %>
+
+
+
+    <% images.forEach( function( img, i ) { %>
+        <% if( i % 4 === 0 ) { %>
+        <div class="row visible-md">
+        <% } %>
+            <div class="col-md-3 text-center">
+                <a href="<%=img.url + img.filename %>">
+                    <img src="<%=img.url + 'thumbs/' + img.thumb %>" />
+                </a>
+            </div>
+        <% if( i % 4 === 3 || i === images.length -1) { %>
+        </div>
+        <% } %>
+    <% }); %>
+
+    <% images.forEach( function( img, i ) { %>
+        <% if( i % 3 === 0 ) { %>
+        <div class="row visible-sm">
+        <% } %>
+            <div class="col-sm-4 text-center">
+                <a href="<%=img.url + img.filename %>">
+                    <img src="<%=img.url + 'thumbs/' + img.thumb %>" />
+                </a>
+            </div>
+        <% if( i % 3 === 2 || i === images.length -1) { %>
+        </div>
+        <% } %>
+    <% }); %>
+
+
+    <% images.forEach( function( img, i ) { %>
+        <% if( i % 2 === 0 ) { %>
+        <div class="row visible-xs">
+        <% } %>
+            <div class="col-xs-6 text-center">
+                <a href="<%=img.url + img.filename %>">
+                    <img src="<%=img.url + 'thumbs/' + img.thumb %>" />
+                </a>
+            </div>
+        <% if( i % 2 === 1 || i === images.length -1) { %>
+        </div>
+        <% } %>
+
+    <% }); %>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div class="row" ng-controller="ListCtrl as vm">
+    <div class="col-sm-8 col-sm-offset-2 bg-success">
+        <br/>
+        <div class="row" ng-repeat="image in vm.images">
+            <div class="col-sm-8">
+                <img ng-src="{{image.url + 'thumbs/' + image.thumb}}" />
+            </div>
+            <div class="col-sm-4">
+                <a href="#/{{image._id}}" class="btn btn-default">VIEW</a>
+                <a href="#/{{image._id}}/edit" class="btn btn-warning">EDIT</a>
+                <button ng-click="vm.delete(image._id, $index)" class="btn btn-danger">DELETE</button>
+            </div>
+            <hr/>
+        </div>
+        <br/>
+    </div>
+</div>
