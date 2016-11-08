@@ -16,6 +16,12 @@ module.exports = function( env ) {
   environment.url = env.NODE_URL || environment.url;
   environment.mongo = env.MONGODB_URI || environment.mongo;
 
+  environment.aws = {
+    accessKey: env.AWS_ACCESS_KEY,
+    secretKey: env.AWS_SECRET_KEY,
+    s3Bucket: env.S3_BUCKET_NAME
+  };
+
   if( env.NODE_ENV === 'production'){
     delete environment.url;
   }

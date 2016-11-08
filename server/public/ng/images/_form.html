@@ -1,16 +1,8 @@
 <form ng-submit="vm.submitImage()">
     <br/>
     <div class="form-group">
-        <label for="title" class="control-label">URL:</label>
-        <input type="text" class="form-control" id="title" ng-model="vm.image.url" >
-    </div>
-    <div class="form-group">
-        <label for="title" class="control-label">Filename:</label>
-        <input type="text" class="form-control" id="title" ng-model="vm.image.filename" >
-    </div>
-    <div class="form-group">
-        <label for="title" class="control-label">Thumb:</label>
-        <input type="text" class="form-control" id="title" ng-model="vm.image.thumb" >
+        <label for="inputFile">Image Upload</label>
+        <input type="file" id="inputFile" bind-change>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-4">

@@ -51,12 +51,22 @@ angular.module('Images', ['ngRoute','textAngular'])
     that.image = {};
 
     that.submitImage = function(){
-      $http.post('/api/images', {image: that.image})
+      $http.get('/api/images/key?filename='+that.image.name)
         .then( function(res){
-          $rootScope.goTo( '/' );
-        }, function(){
-
-        })
+          $http({
+            url: res.data.signedRequest,
+            method: 'PUT',
+            data: that.image,
+            transformRequest: angular.identity,
+            headers: { 'x-amz-acl': 'public-read', 'Authorization': undefined, 'Content-Type': undefined }
+          }).then( function( ){
+            var img = { type: that.image.type, filename: that.image.name, size: that.image.size };
+            $http.post('/api/images', {image: img})
+              .then( function(res){
+                $rootScope.goTo( '/' );
+              })
+          });
+        });
     };
   }])
   .controller('ShowCtrl', ['$http','$routeParams', function($http, $routeParams){
@@ -93,8 +103,10 @@ angular.module('Images', ['ngRoute','textAngular'])
       scope: {
         vm: '='
       },
-      link: function(){
-
+      link: function( scope, el ){
+        angular.element( document ).find('input#inputFile').bind( 'change', function(event){
+          scope.vm.image = event.target.files[0];
+        })
       }
     };
   }]);

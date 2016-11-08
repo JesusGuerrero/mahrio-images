@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = function( server ) {
-  require('./images/index')( server );
 
   server.route({
     method: 'GET',
